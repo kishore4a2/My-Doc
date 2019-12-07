@@ -1,0 +1,21 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'MyDocNYT' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for MyDocNYT
+pod 'Sync', '~> 5'
+
+  target 'MyDocNYTTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'MyDocNYTUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

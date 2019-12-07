@@ -1,0 +1,6 @@
+framework module Pods_MyDocNYTTests {
+  umbrella header "Pods-MyDocNYTTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
