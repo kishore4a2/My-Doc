@@ -1,0 +1,35 @@
+### Headers settings
+company: Kishore
+
+### Xcode project settings
+project_name: MyDocNYT
+xcodeproj_path: MyDocNYT.xcodeproj
+
+### Code generation settings section
+# The main project target name
+project_target: MyDocNYT
+
+# The file path for new modules
+project_file_path: /MyDocNYT
+
+# The Xcode group path to new modules
+project_group_path: /MyDocNYT
+
+### Tests generation settings section
+# The tests target name
+test_target: MyDocNYTTests
+
+# The file path for new tests
+test_file_path: /MyDocNYTTests
+
+# The Xcode group path to new tests
+test_group_path: /MyDocNYTTests
+
+### Dependencies settings section
+podfile_path: Podfile
+
+### Templates
+templates:
+- {name: rviper_controller}
+- {name: mvvm_controller}
+- {name: swifty_viper}
