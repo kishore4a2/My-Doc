@@ -1,4 +1,87 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="false" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19A578c" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Bylines" representedClassName="Bylines" syncable="YES" codeGenerationType="class">
+        <attribute name="organization" optional="YES" attributeType="String"/>
+        <attribute name="original" optional="YES" attributeType="String"/>
+        <relationship name="docBylines" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Docss" inverseName="byline" inverseEntity="Docss"/>
+        <relationship name="person" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Persons" inverseName="personBiline" inverseEntity="Persons"/>
+    </entity>
+    <entity name="Docss" representedClassName="Docss" syncable="YES" codeGenerationType="class">
+        <attribute name="abstract" optional="YES" attributeType="String"/>
+        <attribute name="document_type" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="lead_paragraph" optional="YES" attributeType="String"/>
+        <attribute name="news_desk" optional="YES" attributeType="String"/>
+        <attribute name="print_page" optional="YES" attributeType="String"/>
+        <attribute name="print_section" optional="YES" attributeType="String"/>
+        <attribute name="pub_date" optional="YES" attributeType="String"/>
+        <attribute name="section_name" optional="YES" attributeType="String"/>
+        <attribute name="snippet" optional="YES" attributeType="String"/>
+        <attribute name="source" optional="YES" attributeType="String"/>
+        <attribute name="type_of_material" optional="YES" attributeType="String"/>
+        <attribute name="uri" optional="YES" attributeType="String"/>
+        <attribute name="web_url" optional="YES" attributeType="String"/>
+        <attribute name="word_count" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="byline" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bylines" inverseName="docBylines" inverseEntity="Bylines"/>
+        <relationship name="headline" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HeadLines" inverseName="docHeadlines" inverseEntity="HeadLines"/>
+        <relationship name="keywords" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Keywordss" inverseName="keywordDocs" inverseEntity="Keywordss"/>
+        <relationship name="multimedia" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Multimedias" inverseName="docMultiMedia" inverseEntity="Multimedias"/>
+    </entity>
+    <entity name="HeadLines" representedClassName="HeadLines" syncable="YES" codeGenerationType="class">
+        <attribute name="content_kicker" optional="YES" attributeType="String"/>
+        <attribute name="kicker" optional="YES" attributeType="String"/>
+        <attribute name="main" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="print_headline" optional="YES" attributeType="String"/>
+        <attribute name="seo" optional="YES" attributeType="String"/>
+        <attribute name="sub" optional="YES" attributeType="String"/>
+        <relationship name="docHeadlines" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Docss" inverseName="headline" inverseEntity="Docss"/>
+    </entity>
+    <entity name="Keywordss" representedClassName="Keywordss" syncable="YES" codeGenerationType="class">
+        <attribute name="major" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="rank" optional="YES" attributeType="String"/>
+        <attribute name="value" optional="YES" attributeType="String"/>
+        <relationship name="keywordDocs" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Docss" inverseName="keywords" inverseEntity="Docss"/>
+    </entity>
+    <entity name="Legacys" representedClassName="Legacys" syncable="YES" codeGenerationType="class">
+        <attribute name="xlarge" optional="YES" attributeType="String"/>
+        <attribute name="xlargeheight" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="xlargewidth" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="multiMediaLegacy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Multimedias" inverseName="legacy" inverseEntity="Multimedias"/>
+    </entity>
+    <entity name="Multimedias" representedClassName="Multimedias" syncable="YES" codeGenerationType="class">
+        <attribute name="caption" optional="YES" attributeType="String"/>
+        <attribute name="credit" optional="YES" attributeType="String"/>
+        <attribute name="crop_name" optional="YES" attributeType="String"/>
+        <attribute name="height" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="rank" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="subtype" optional="YES" attributeType="String"/>
+        <attribute name="subType" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <attribute name="width" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="docMultiMedia" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Docss" inverseName="multimedia" inverseEntity="Docss"/>
+        <relationship name="legacy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Legacys" inverseName="multiMediaLegacy" inverseEntity="Legacys"/>
+    </entity>
+    <entity name="Persons" representedClassName="Persons" syncable="YES" codeGenerationType="class">
+        <attribute name="firstname" optional="YES" attributeType="String"/>
+        <attribute name="lastname" optional="YES" attributeType="String"/>
+        <attribute name="middlename" optional="YES" attributeType="String"/>
+        <attribute name="organization" optional="YES" attributeType="String"/>
+        <attribute name="qualifier" optional="YES" attributeType="String"/>
+        <attribute name="rank" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="role" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="personBiline" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Bylines" inverseName="person" inverseEntity="Bylines"/>
+    </entity>
+    <elements>
+        <element name="Docss" positionX="-364.09765625" positionY="26.43359375" width="128" height="328"/>
+        <element name="Multimedias" positionX="-128.1171875" positionY="97.9921875" width="128" height="223"/>
+        <element name="Legacys" positionX="142.88671875" positionY="212" width="128" height="103"/>
+        <element name="HeadLines" positionX="-645.171875" positionY="161.484375" width="128" height="163"/>
+        <element name="Bylines" positionX="-691.8515625" positionY="381.6171875" width="128" height="103"/>
+        <element name="Persons" positionX="-380.4296875" positionY="381.2421875" width="128" height="178"/>
+        <element name="Keywordss" positionX="-579.62890625" positionY="-22.484375" width="128" height="118"/>
+    </elements>
 </model>
